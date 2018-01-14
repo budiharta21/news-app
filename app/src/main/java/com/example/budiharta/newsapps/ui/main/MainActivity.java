@@ -1,7 +1,9 @@
-package com.example.budiharta.newsapps;
+package com.example.budiharta.newsapps.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.budiharta.newsapps.R;
 
 public class MainActivity extends AppCompatActivity {
 
