@@ -1,45 +1,41 @@
 package com.example.budiharta.newsapps.data.remote.model;
 
-/**
- * Created by budiharta on 1/14/2018.
- */
-
 public class NewsItem {
 
-    private string urlCover;
-    private string title;
-    private string author;
-    private string description;
+    private String urlCover;
+    private String title;
+    private String author;
+    private String description;
 
-    public string getUrlCover() {
+    public String getUrlCover() {
         return urlCover;
     }
 
-    public void setUrlCover(string urlCover) {
+    public void setUrlCover(String urlCover) {
         this.urlCover = urlCover;
     }
 
-    public string getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(string title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public string getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(string author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public string getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(string description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }

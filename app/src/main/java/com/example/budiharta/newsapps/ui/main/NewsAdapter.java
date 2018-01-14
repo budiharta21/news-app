@@ -8,7 +8,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.budiharta.newsapps.R;
+import com.example.budiharta.newsapps.data.remote.model.NewsItem;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +24,8 @@ import butterknife.ButterKnife;
  */
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+
+    private List<NewsItem> dataSet = new ArrayList<>();
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,12 +39,29 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        NewsItem newsItem = dataSet.get(position);
+        holder.tvTitle.setText(newsItem.getTitle());
+        holder.tvAuthor.setText(newsItem.getAuthor());
+        holder.tvDescription.setText(newsItem.getDescription());
+        //use glide to get image from internet
+        Glide.with(holder.itemView.getContext())
+                .load(newsItem.getUrlCover())
+                .into(holder.ivCover);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataSet.size();
+    }
+
+    public void setData(List<NewsItem> newsItemList){
+        this.dataSet = newsItemList;
+        notifyDataSetChanged();
+    }
+
+    public void clearData(){
+        this.dataSet = Collections.emptyList();
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -45,8 +70,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         ImageView ivCover;
         @BindView(R.id.tv_title)
         TextView tvTitle;
-        @BindView(R.id.author)
-        TextView author;
+        @BindView(R.id.tv_author)
+        TextView tvAuthor;
         @BindView(R.id.tv_description)
         TextView tvDescription;
         @BindView(R.id.btn_read_more)
